@@ -20,7 +20,7 @@ export default function Wishlist() {
               <img src={item.image} alt={item.name} className="w-full h-48 object-cover" />
               <div className="p-4">
                 <h2 className="text-lg font-semibold text-dark">{item.name}</h2>
-                <p className="text-primary font-bold">${item.price.toFixed(2)}</p>
+                <p className="text-primary font-bold">${Number(item.price).toLocaleString("id")}</p>
                 <button onClick={() => removeFromWishlist(item.id)} className="btn btn-secondary mt-4 block text-center">
                   Remove from Wishlist
                 </button>

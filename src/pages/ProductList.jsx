@@ -16,7 +16,7 @@ export default function ProductList() {
             <img src={product.image} alt={product.name} className="w-full h-48 object-cover" />
             <div className="p-4">
               <h2 className="text-lg font-semibold text-dark">{product.name}</h2>
-              <p className="text-primary font-bold">${product.price.toFixed(2)}</p>
+              <p className="text-primary font-bold">Rp.{Number(product.price).toLocaleString("id")}</p>
               <Link to={`/product/${product.id}`} className="btn btn-primary mt-4 block text-center">
                 View Details
               </Link>

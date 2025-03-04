@@ -18,7 +18,7 @@ export default function ProductDetail() {
         <img src={product.image} alt={product.name} className="w-full md:w-1/2 h-96 object-cover" />
         <div className="md:ml-8 mt-4 md:mt-0">
           <h1 className="text-3xl font-bold text-dark">{product.name}</h1>
-          <p className="text-primary font-bold text-2xl mt-2">${product.price.toFixed(2)}</p>
+          <p className="text-primary font-bold text-2xl mt-2">${Number(product.price).toLocaleString("id")}</p>
           <p className="mt-4 text-gray-700">{product.description}</p>
           <button onClick={addToCart} className="btn btn-primary mt-6">
             Add to Cart

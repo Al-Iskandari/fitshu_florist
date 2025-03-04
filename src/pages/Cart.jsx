@@ -28,7 +28,7 @@ export default function Cart() {
                   <img src={item.image} alt={item.name} className="w-16 h-16 object-cover" />
                   <div className="ml-4">
                     <h2 className="text-lg font-semibold text-dark">{item.name}</h2>
-                    <p className="text-primary">${item.price.toFixed(2)}</p>
+                    <p className="text-primary">${Number(item.price).toLocaleString("id")}</p>
                   </div>
                 </div>
                 <div className="flex items-center">

@@ -11,10 +11,12 @@ export async function fetchProducts() {
   try {
     // In a real application, you would make a request to your backend API
     // which would then fetch data from Google Sheets
-    const response = await axios.get(`${API_URL}/products`);
+    const response = await axios.get(PRODUCTS_SHEET_ID).then((response)=>{
+      return parseCSV(response.data);
+    });
     
     // For demonstration purposes, let's assume the API returns data in this format
-    return response.data.map(product => ({
+    return response.map(product => ({
       id: product.id,
       name: product.name,
       price: parseFloat(product.price),
@@ -30,6 +32,21 @@ export async function fetchProducts() {
     // For development purposes, return mock data if API fails
     return mockProducts;
   }
+}
+
+function parseCSV(csvText) {
+  const rows = csvText.split(/\r?\n/);        // Use a regular expression to split the CSV text into rows while handling '\r'
+  const headers = rows[0].split(',');        // Extract headers (assumes the first row is the header row)
+  const data = [];        // Initialize an array to store the parsed data
+  for (let i = 1; i < rows.length; i++) {
+      const rowData = rows[i].split(',');          // Use the regular expression to split the row while handling '\r'
+      const rowObject = {};
+      for (let j = 0; j < headers.length; j++) {
+          rowObject[headers[j]] = rowData[j];
+      }
+      data.push(rowObject);
+  }
+  return data;
 }
 
 export async function saveTransaction(transaction) {
