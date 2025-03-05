@@ -6,7 +6,12 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <h3 className="text-lg font-semibold mb-4">FitshuFlorist</h3>
+            <div className="flex items-center">
+              <Link to="/" className="flex-shrink-0 flex items-center">
+                <span className="text-2xl font-bold text-primary">Fitshu</span>
+                <span className="text-2xl font-light text-white">Florist</span>
+              </Link>
+            </div>
             <p className="text-gray-300 text-sm">
               Bringing beauty and joy through carefully crafted floral arrangements since 2023.
             </p>
@@ -51,17 +56,17 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
             <address className="text-gray-300 text-sm not-italic">
-              <p>123 Flower Street</p>
-              <p>Blossom City, BC 12345</p>
-              <p className="mt-2">Email: info@bloombouquet.com</p>
-              <p>Phone: (123) 456-7890</p>
+              <p>Jl. Raja Oesman, No.45</p>
+              <p>Sei. Lakam Timur, Karimun-Kepri</p>
+              <p className="mt-2">Email: fitshuflorist@gmail.com</p>
+              <p>Phone: +62 812-1518-6161</p>
             </address>
           </div>
         </div>
         
         <div className="mt-8 pt-8 border-t border-gray-700 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-300 text-sm">
-            &copy; {new Date().getFullYear()} BloomBouquet. All rights reserved.
+            &copy; {new Date().getFullYear()} FitshuFlorist. All rights reserved. <span className="">Powered by Tamadun.id</span>
           </p>
           <div className="mt-4 md:mt-0 flex space-x-6">
             <a href="#" className="text-gray-300 hover:text-white">

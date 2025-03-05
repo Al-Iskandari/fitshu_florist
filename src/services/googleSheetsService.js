@@ -14,6 +14,8 @@ export async function fetchProducts() {
     const response = await axios.get(PRODUCTS_SHEET_ID).then((response)=>{
       return parseCSV(response.data);
     });
+
+    console.log(response);
     
     // For demonstration purposes, let's assume the API returns data in this format
     return response.map(product => ({

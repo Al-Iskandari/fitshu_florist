@@ -28,7 +28,7 @@ export default function Cart() {
                   <img src={item.image} alt={item.name} className="w-16 h-16 object-cover" />
                   <div className="ml-4">
                     <h2 className="text-lg font-semibold text-dark">{item.name}</h2>
-                    <p className="text-primary">${Number(item.price).toLocaleString("id")}</p>
+                    <p className="text-primary">Rp {Number(item.price).toLocaleString("id")}</p>
                   </div>
                 </div>
                 <div className="flex items-center">
@@ -47,7 +47,7 @@ export default function Cart() {
             ))}
           </ul>
           <div className="mt-6 text-right">
-            <p className="text-xl font-bold">Total: ${total.toFixed(2)}</p>
+            <p className="text-xl font-bold mb-2">Total: Rp {total.toLocaleString("id")}</p>
             <Link to="/checkout" className="btn btn-primary mt-4">
               Proceed to Checkout
             </Link>

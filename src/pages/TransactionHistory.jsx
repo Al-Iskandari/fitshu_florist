@@ -19,7 +19,7 @@ export default function TransactionHistory() {
               <ul className="mt-2">
                 {transaction.items.map(item => (
                   <li key={item.id} className="text-gray-700">
-                    {item.name} x{item.quantity} - ${Number(item.price).toLocaleString("id")}
+                    {item.name} x{item.quantity} - Rp {Number(item.price).toLocaleString("id")}
                   </li>
                 ))}
               </ul>

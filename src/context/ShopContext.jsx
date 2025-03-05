@@ -138,6 +138,7 @@ export function ShopProvider({ children }) {
   return <ShopContext.Provider value={value}>{children}</ShopContext.Provider>;
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useShop() {
   const context = useContext(ShopContext);
   if (!context) {
