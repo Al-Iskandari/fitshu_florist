@@ -4,6 +4,25 @@ import toast from 'react-hot-toast';
 
 const ShopContext = createContext();
 
+// Helper functions for localStorage
+const saveToLocalStorage = (key, data) => {
+  try {
+    localStorage.setItem(key, JSON.stringify(data));
+  } catch (error) {
+    console.error(`Error saving ${key} to localStorage:`, error);
+  }
+};
+
+const loadFromLocalStorage = (key) => {
+  try {
+    const item = localStorage.getItem(key);
+    return item ? JSON.parse(item) : null;
+  } catch (error) {
+    console.error(`Error loading ${key} from localStorage:`, error);
+    return null;
+  }
+};
+
 const initialState = {
   products: [],
   categories: [],
@@ -27,6 +46,12 @@ function shopReducer(state, action) {
       return { ...state, categories: action.payload, loading: false };
     case 'SET_ERROR':
       return { ...state, error: action.payload, loading: false };
+    case 'SET_CART':
+      return { ...state, cart: action.payload };
+    case 'SET_WISHLIST':
+      return { ...state, wishlist: action.payload };
+    case 'SET_TRANSACTIONS':
+      return { ...state, transactions: action.payload };
     case 'ADD_TO_CART': {
       const existingItem = state.cart.find(item => item.id === action.payload.id);
       
@@ -97,7 +122,18 @@ function shopReducer(state, action) {
 }
 
 export function ShopProvider({ children }) {
-  const [state, dispatch] = useReducer(shopReducer, initialState);
+  // Initialize state with data from localStorage if available
+  const persistedCart = loadFromLocalStorage('flowerShopCart') || [];
+  const persistedWishlist = loadFromLocalStorage('flowerShopWishlist') || [];
+  const persistedTransactions = loadFromLocalStorage('flowerShopTransactions') || [];
+  
+  const initialStateWithPersistedData = {
+    ...initialState,
+    cart: persistedCart,
+    wishlist: persistedWishlist,
+    transactions: persistedTransactions
+  };
+  const [state, dispatch] = useReducer(shopReducer, initialStateWithPersistedData);
 
   useEffect(() => {
     const loadProductsAndCategories = async () => {
@@ -115,36 +151,19 @@ export function ShopProvider({ children }) {
     loadProductsAndCategories();
   }, []);
 
-  // Load cart and wishlist from localStorage
+  // Save cart to localStorage when it changes
   useEffect(() => {
-    const savedCart = localStorage.getItem('flowerShopCart');
-    const savedWishlist = localStorage.getItem('flowerShopWishlist');
-    const savedTransactions = localStorage.getItem('flowerShopTransactions');
-    
-    if (savedCart) {
-      dispatch({ type: 'SET_CART', payload: JSON.parse(savedCart) });
-    }
-    
-    if (savedWishlist) {
-      dispatch({ type: 'SET_WISHLIST', payload: JSON.parse(savedWishlist) });
-    }
-    
-    if (savedTransactions) {
-      dispatch({ type: 'SET_TRANSACTIONS', payload: JSON.parse(savedTransactions) });
-    }
-  }, []);
-
-  // Save cart and wishlist to localStorage when they change
-  useEffect(() => {
-    localStorage.setItem('flowerShopCart', JSON.stringify(state.cart));
+    saveToLocalStorage('flowerShopCart', state.cart);
   }, [state.cart]);
   
+  // Save wishlist to localStorage when it changes
   useEffect(() => {
-    localStorage.setItem('flowerShopWishlist', JSON.stringify(state.wishlist));
+    saveToLocalStorage('flowerShopWishlist', state.wishlist);
   }, [state.wishlist]);
   
+  // Save transactions to localStorage when they change
   useEffect(() => {
-    localStorage.setItem('flowerShopTransactions', JSON.stringify(state.transactions));
+    saveToLocalStorage('flowerShopTransactions', state.transactions);
   }, [state.transactions]);
 
   const value = {

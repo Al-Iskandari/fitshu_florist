@@ -114,12 +114,12 @@ export default function ProductList() {
       <h1 className="text-lg lg:text-xl font-bold text-dark mb-6">kategori {cat}</h1>
       <Slider {...sliderSettings}>
         <div>
-          <button onClick={searchBySubcategory} className="border border-solid border-black rounded px-2 py-1 text-dark hover:bg-secondary hover:border-white hover:text-white">All</button>
+          <button onClick={searchBySubcategory} className="border border-solid border-black rounded px-2 py-1 text-dark hover:bg-primary hover:border-white hover:text-white">All</button>
         </div>
         {categories.map(category => (
           (category.refference === cat) &&
           <div key={category.id}>
-            <button onClick={searchBySubcategory} className="border border-solid border-black rounded px-2 py-1 text-dark hover:bg-secondary hover:border-white hover:text-white">{category.name}</button>
+            <button onClick={searchBySubcategory} className="border border-solid border-black rounded px-2 py-1 text-dark hover:bg-primary hover:border-white hover:text-white">{category.name}</button>
           </div>
         ))}
       </Slider>
