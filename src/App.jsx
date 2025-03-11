@@ -3,6 +3,7 @@ import { Toaster } from 'react-hot-toast';
 import { ShopProvider } from './context/ShopContext';
 import Navbar from './components/Layout/Navbar';
 import Footer from './components/Layout/Footer';
+import Home from './pages/Home';
 import ProductList from './pages/ProductList';
 import ProductDetail from './pages/ProductDetail';
 import Cart from './pages/Cart';
@@ -18,8 +19,11 @@ function App() {
           <Navbar />
           <main className="flex-grow">
             <Routes>
-              <Route path="/" element={<ProductList />} exact />
+              <Route path="/" element={<Home />} exact />
               <Route path="/product/:id" element={<ProductDetail/>} />
+              <Route path="/shop/:cat" element={<ProductList/>} />
+              <Route path="/shop/:cat" element={<ProductList/>} />
+              <Route path="/shop/:cat" element={<ProductList/>} />
               <Route path="/cart" element={<Cart/>} />
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/wishlist" element={<Wishlist/>} />

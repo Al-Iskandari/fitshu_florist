@@ -8,6 +8,7 @@ export default function Footer() {
           <div>
             <div className="flex items-center">
               <Link to="/" className="flex-shrink-0 flex items-center">
+                <img className="w-12 h-12 -mr-4 mt-0 md:-mt-3" width="100px" height="100px" src="/fitshuflorist-logo.png" />
                 <span className="text-2xl font-bold text-primary">Fitshu</span>
                 <span className="text-2xl font-light text-white">Florist</span>
               </Link>

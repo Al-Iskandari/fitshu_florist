@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const API_URL = import.meta.env.VITE_GOOGLE_SHEETS_API_URL;
 const PRODUCTS_SHEET_ID = import.meta.env.VITE_PRODUCTS_SHEET_ID;
+const CATEGORIES_SHEET_ID = import.meta.env.VITE_CATEGORIES_SHEET_ID;
 const TRANSACTIONS_SHEET_ID = import.meta.env.VITE_TRANSACTIONS_SHEET_ID;
 
 // This is a simplified example. In a real application, you would need to set up
@@ -9,8 +10,6 @@ const TRANSACTIONS_SHEET_ID = import.meta.env.VITE_TRANSACTIONS_SHEET_ID;
 
 export async function fetchProducts() {
   try {
-    // In a real application, you would make a request to your backend API
-    // which would then fetch data from Google Sheets
     const response = await axios.get(PRODUCTS_SHEET_ID).then((response)=>{
       return parseCSV(response.data);
     });
@@ -25,14 +24,38 @@ export async function fetchProducts() {
       description: product.description,
       image: product.image,
       category: product.category,
+      subcategory: product.subcategory,
       stock: parseInt(product.stock, 10),
-      featured: product.featured === 'TRUE',
+      label: product.label,
+      label_desc: product.label_desc,
     }));
   } catch (error) {
     console.error('Error fetching products:', error);
     
     // For development purposes, return mock data if API fails
     return mockProducts;
+  }
+}
+
+export async function fetchCategories() {
+  try {
+    const response = await axios.get(CATEGORIES_SHEET_ID).then((response)=>{
+      return parseCSV(response.data);
+    });
+
+    //console.log(response);
+    
+    // For demonstration purposes, let's assume the API returns data in this format
+    return response.map(category => ({
+      id: category.id,
+      name: category.name,
+      refference: category.refference,
+    }));
+
+  } catch (error) {
+    console.error('Error fetching categories:', error);
+    return mockCategories;
+    //throw error;
   }
 }
 
@@ -62,6 +85,21 @@ export async function saveTransaction(transaction) {
     throw error;
   }
 }
+
+export async function fetchSliderImages() {
+  try {
+    const response = await fetch('YOUR_GOOGLE_SHEETS_API_URL_FOR_SLIDER');
+    const data = await response.json();
+    return data.map(item => ({
+      id: item.id,
+      imageUrl: item.imageUrl,
+    }));
+  } catch (error) {
+    console.error('Error fetching slider images:', error);
+    throw error;
+  }
+}
+
 
 // Mock data for development purposes
 const mockProducts = [
@@ -126,3 +164,14 @@ const mockProducts = [
     featured: false,
   },
 ];
+
+const mockCategories = [
+  { id: 'all', name: 'All', refference:'' },
+  {id:'mb',name:'Uang',refference:'bouquet'},
+  {id:'sb',name:'Snacks',refference:'bouquet'},
+  {id:'fb',name:'Bunga',refference:'bouquet'},
+  {id:'bh',name:'Bayi',refference:'hamper'},
+  {id:'ih',name:'Ibadah-Muslim',refference:'hamper'},
+  {id:'gh',name:'Go-Green',refference:'hamper'},
+  {id:'lh',name:'Lebaran',refference:'hamper'},
+]

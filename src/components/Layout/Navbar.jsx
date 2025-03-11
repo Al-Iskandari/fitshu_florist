@@ -15,8 +15,9 @@ export default function Navbar() {
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0 flex items-center">
-              <span className="text-2xl font-bold text-primary">Fitshu</span>
-              <span className="text-2xl font-light text-dark">Florist</span>
+              <img className="w-12 h-12 -mr-4 mt-0 md:-mt-3" width="100px" height="100px" src="/fitshuflorist-logo.png" />
+              <span className="text-2xl hidden md:block font-bold text-primary">Fitshu</span>
+              <span className="text-2xl hidden md:block font-light text-dark">Florist</span>
             </Link>
           </div>
           
@@ -25,14 +26,14 @@ export default function Navbar() {
             <Link to="/" className="text-dark hover:text-primary px-3 py-2 text-sm font-medium">
               Home
             </Link>
-            <Link to="/shop" className="text-dark hover:text-primary px-3 py-2 text-sm font-medium">
-              Shop
+            <Link to="/shop/bouquet" className="text-dark hover:text-primary px-3 py-2 text-sm font-medium">
+              Bouquets
             </Link>
-            <Link to="/about" className="text-dark hover:text-primary px-3 py-2 text-sm font-medium">
-              About
+            <Link to="/shop/hamper" className="text-dark hover:text-primary px-3 py-2 text-sm font-medium">
+              Hampers
             </Link>
-            <Link to="/contact" className="text-dark hover:text-primary px-3 py-2 text-sm font-medium">
-              Contact
+            <Link to="/shop/hantaran" className="text-dark hover:text-primary px-3 py-2 text-sm font-medium">
+              Hantaran
             </Link>
           </div>
           
@@ -85,25 +86,25 @@ export default function Navbar() {
               Home
             </Link>
             <Link 
-              to="/shop" 
+              to="/shop/bouquet"
               className="block px-3 py-2 rounded-md text-base font-medium text-dark hover:bg-gray-100"
               onClick={() => setIsMenuOpen(false)}
             >
-              Shop
+              Bouquets
             </Link>
             <Link 
-              to="/about" 
+              to="/shop/hamper"
               className="block px-3 py-2 rounded-md text-base font-medium text-dark hover:bg-gray-100"
               onClick={() => setIsMenuOpen(false)}
             >
-              About
+              Hampers
             </Link>
             <Link 
-              to="/contact" 
+              to="/shop/hantaran"
               className="block px-3 py-2 rounded-md text-base font-medium text-dark hover:bg-gray-100"
               onClick={() => setIsMenuOpen(false)}
             >
-              Contact
+              Hantaran
             </Link>
           </div>
         </div>
