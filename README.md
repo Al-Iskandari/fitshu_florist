@@ -42,8 +42,8 @@ Main source code of the application.
 - `pages/`: Components that represent the different pages of the application.
 - `Home.jsx`, `ProductList.jsx`, `ProductDetail.jsx`, `Cart.jsx`, `Checkout.jsx`, `Wishlist.jsx`, `TransactionHistory.jsx`: Pages for product listing, details, shopping cart, checkout, wishlist and transaction history.
 - `services/`: Logic for communicating with external services.
-- `googleSheetsService.js`: Interaction with the Google Sheets API (probably for managing products).
-- `whatsappService.js`: Integration with the WhatsApp API (possibly for communicating with customers).
+- `googleSheetsService.js`: Interaction with the Google Sheets API for product management.
+- `whatsappService.js`: Integration with the WhatsApp API for customer communication.
 
 
 This structure suggests a complete and well-organized web application for an online flower shop. Integration with Google Sheets and WhatsApp is an interesting differential for product management and customer communication.
