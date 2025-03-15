@@ -8,7 +8,7 @@ export default function Checkout() {
   const { cart, dispatch } = useShop();
   const [customer, setCustomer] = useState({ name: '', email: '', phone: '', address: '' });
   const [delivery, setDelivery] = useState({ date: '', time: '', instructions: '' });
-
+  
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setCustomer({ ...customer, [name]: value });
@@ -30,7 +30,7 @@ export default function Checkout() {
       customer,
       items: cart,
       subtotal: cart.reduce((sum, item) => sum + item.price * item.quantity, 0),
-      shipping: 5.00, // Flat rate shipping
+      logistic: 10000, // Flat rate shipping
       total: cart.reduce((sum, item) => sum + item.price * item.quantity, 0) + 5.00,
       delivery,
     };

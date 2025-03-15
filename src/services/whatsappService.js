@@ -3,7 +3,7 @@ export function sendWhatsAppMessage(transaction) {
   
   // Format the items for WhatsApp message
   const items = transaction.items.map(item => 
-    `- ${item.name} x${item.quantity} ($${(item.price * item.quantity).toFixed(2)})`
+    `- ${item.name} x${item.quantity} (Rp ${Number(item.price * item.quantity).toLocaleString("id")})`
   ).join('\n');
   
   // Create the message
@@ -20,9 +20,9 @@ Address: ${transaction.customer.address}
 ${items}
 
 *Order Summary:*
-Subtotal: $${transaction.subtotal.toFixed(2)}
-Shipping: $${transaction.shipping.toFixed(2)}
-Total: $${transaction.total.toFixed(2)}
+Subtotal: Rp ${Number(transaction.subtotal).toLocaleString("id")}
+Shipping: Rp ${Number(transaction.logistic).toLocaleString("id")}
+Total: Rp ${Number(transaction.total).toLocaleString("id")}
 
 *Delivery Details:*
 Date: ${transaction.delivery.date}

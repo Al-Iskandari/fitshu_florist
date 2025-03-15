@@ -78,7 +78,12 @@ export async function saveTransaction(transaction) {
   try {
     // In a real application, you would make a POST request to your backend API
     // which would then save the data to Google Sheets
-    const response = await axios.post(`${API_URL}/transactions`, transaction);
+    const response = await axios.post(`${TRANSACTIONS_SHEET_ID}`, JSON.stringify(transaction),
+      { headers: {
+          "Content-Type": "text/plain;charset=utf-8",
+        },
+
+      });
     return response.data;
   } catch (error) {
     console.error('Error saving transaction:', error);

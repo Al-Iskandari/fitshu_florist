@@ -1,12 +1,47 @@
-# React + Vite
+## 💐 Florist Online Store 💐
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a web application for a florist online store, built with React, Vite, Tailwind CSS and using Google Sheets and WhatsApp for features such as product management and customer communication.
 
-Currently, two official plugins are available:
+## 💻 Technologies Used
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React
+- Vite
+- Tailwind CSS
+- Google Sheets API
+- WhatsApp API
+- JavaScript
+- PostCSS
+- ESLint
 
-## Expanding the ESLint configuration
+## 📂 Project Architecture
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 📁 public/
+
+Static resources that will be served directly.
+
+- `favicon.png`, `vite.svg`, etc.: Standard icons and images.
+
+- `fitshuflorist*.png`: Images related to the florist's brand (logo, etc.).
+
+### 📁 src/
+
+Main source code of the application.
+
+- `App.jsx`, `App.css`: Main component and its styles.
+- `main.jsx`: Entry point of the application.
+- `index.css`: Global styles.
+- `assets/`: Other resources, such as images.
+- `components/`: Reusable React components.
+- `Layout/`: Page layout components.
+- `Navbar.jsx`: Navigation bar component.
+- `Footer.jsx`: Footer component.
+- `context/`: Defines contexts for global state management.
+- `ShopContext.jsx`: Context for store data (cart, products, etc.).
+- `pages/`: Components that represent the different pages of the application.
+- `Home.jsx`, `ProductList.jsx`, `ProductDetail.jsx`, `Cart.jsx`, `Checkout.jsx`, `Wishlist.jsx`, `TransactionHistory.jsx`: Pages for product listing, details, shopping cart, checkout, wishlist and transaction history.
+- `services/`: Logic for communicating with external services.
+- `googleSheetsService.js`: Interaction with the Google Sheets API (probably for managing products).
+- `whatsappService.js`: Integration with the WhatsApp API (possibly for communicating with customers).
+
+
+This structure suggests a complete and well-organized web application for an online flower shop. Integration with Google Sheets and WhatsApp is an interesting differential for product management and customer communication.
