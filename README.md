@@ -1,5 +1,7 @@
 ## 💐 Florist Online Store 💐
 
+![flower-shop](https://github.com/user-attachments/assets/70c267db-b2f5-43d7-9245-4c39e2b040f2)
+
 This project is a web application for a florist online store, built with React, Vite, Tailwind CSS and using Google Sheets and WhatsApp for features such as product management and customer communication.
 
 ## 💻 Technologies Used
